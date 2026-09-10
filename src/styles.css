@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0b0c0e;
+  --color-surface: #14161a;
+  --color-elevated: #1c1f26;
+  --color-fg: #e8eaee;
+  --color-muted: #8b909c;
+  --color-subtle: #5c616c;
+  --color-accent: #7ec8c4;
+  --color-border: #2a2e36;
+  --color-key-white: #eceae4;
+  --color-key-white-fg: #1a1c20;
+  --color-key-black: #16181c;
+  --color-key-black-fg: #c5c8ce;
+
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-2xs: 0.625rem;
+
+  --tracking-panel: 0.16em;
+  --tracking-display: 0.18em;
+  --tracking-brand: 0.28em;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  --spacing-knob: 4.5rem;
+  --spacing-keybed: 45rem;
+}
+
+@layer base {
+  :root {
+    --motion-micro: 80ms;
+    --motion-quick: 150ms;
+    --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+    --key-h: 9.25rem;
+    --shadow-border: 0 0 0 1px rgba(232, 234, 238, 0.08);
+    --shadow-border-hover: 0 0 0 1px rgba(232, 234, 238, 0.14);
+    --shadow-chassis:
+      0 0 0 1px rgba(232, 234, 238, 0.06),
+      0 18px 40px rgba(0, 0, 0, 0.35);
+    --shadow-key-white:
+      inset 0 -3px 0 rgba(26, 28, 32, 0.12),
+      0 1px 0 rgba(0, 0, 0, 0.28);
+    --shadow-key-black:
+      inset 0 -2px 0 rgba(232, 234, 238, 0.06),
+      0 2px 0 #050506;
+    --scope-grid: rgba(232, 234, 238, 0.07);
+    --scope-idle: rgba(126, 200, 196, 0.35);
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --key-h: 11.5rem;
+    }
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: var(--color-bg);
+    color: var(--color-fg);
+  }
+
+  body {
+    min-height: 100dvh;
+    background: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .keybed {
+    height: var(--key-h);
+    min-width: var(--spacing-keybed);
+  }
+}
