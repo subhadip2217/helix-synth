@@ -5,7 +5,7 @@ import { WindowState } from './Desktop'
 import { cn } from '@/lib/utils'
 
 interface Props {
-  window: WindowState
+  win: WindowState
   isActive: boolean
   onFocus: () => void
   onClose: () => void
@@ -16,7 +16,7 @@ interface Props {
 }
 
 export default function Window({
-  window,
+  win,
   isActive,
   onFocus,
   onClose,
@@ -34,8 +34,8 @@ export default function Window({
     onFocus()
     setDragging(true)
     dragOffset.current = {
-      x: e.clientX - window.x,
-      y: e.clientY - window.y,
+      x: e.clientX - win.x,
+      y: e.clientY - win.y,
     }
   }
 
@@ -58,13 +58,13 @@ export default function Window({
     }
   }, [dragging, onUpdate])
 
-  const style = window.maximized
+  const style = win.maximized
     ? { top: 0, left: 0, width: '100%', height: 'calc(100% - 48px)' }
     : {
-        top: window.y,
-        left: window.x,
-        width: window.width,
-        height: window.height,
+        top: win.y,
+        left: win.x,
+        width: win.width,
+        height: win.height,
       }
 
   return (
@@ -75,7 +75,7 @@ export default function Window({
       exit={{ opacity: 0, scale: 0.95 }}
       style={{
         ...style,
-        zIndex: window.zIndex,
+        zIndex: win.zIndex,
         position: 'absolute',
       }}
       className={cn(
@@ -96,7 +96,7 @@ export default function Window({
         onDoubleClick={onMaximize}
       >
         <div className="flex items-center gap-2 text-sm font-medium text-white/90">
-          <span className="text-purple-300 text-xs">{window.title}</span>
+          <span className="text-purple-300 text-xs">{win.title}</span>
         </div>
 
         <div className="flex items-center gap-1">
