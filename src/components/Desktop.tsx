@@ -1,5 +1,4 @@
 import { useState, useCallback } from 'react'
-import { motion } from 'framer-motion'
 import Taskbar from './Taskbar'
 import Window from './Window'
 import DesktopIcons from './DesktopIcons'
@@ -124,7 +123,7 @@ export default function Desktop() {
         !win.minimized && (
           <Window
             key={win.id}
-            window={win}
+            win={win}
             isActive={activeId === win.id}
             onFocus={() => focusWindow(win.id)}
             onClose={() => closeWindow(win.id)}
